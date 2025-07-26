@@ -1,1 +1,1 @@
-** Welcome to **Limbeo** a **game** created by ```MercuryLang``` **
+## Welcome to **Limbeo** a **game** created by ```MercuryLang```
