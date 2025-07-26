@@ -1,2 +1,1 @@
-# Limbo
-A MercuryLang game
+# Welcome to **Limbeo** a **game** created by ```MercuryLang``` 
