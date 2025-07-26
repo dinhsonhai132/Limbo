@@ -1,0 +1,66 @@
+import "MGL" # Mercury Game Library
+
+screen_width = 500
+screen_height = 500
+
+screen_init(screen_width, screen_height)
+
+cube_width = 50
+cube_height = 50
+
+cube_color = [255, 255, 255]
+
+cube_vel = 5
+g_vel = 5
+jump_power = 15
+gravity = 0.5
+
+cube_x = 0
+cube_y = screen_height - cube_height
+
+running = true
+jump = false
+jump_velocity = 0
+
+while running do
+    screen_fill(0, 0, 0)
+
+    screen_draw(cube_x, cube_y, cube_width, cube_height, cube_color[0], cube_color[1], cube_color[2])
+
+    let key = get_key_char(key_pressed())
+
+    if same(key, "a") then
+        cube_x -= cube_vel
+    end
+ 
+    if same(key, "d") then
+        cube_x += cube_vel
+    end
+
+    if same(key, "w") and not jump then
+        jump = true
+        jump_velocity = 0 - jump_power
+    end
+
+    if jump then
+        cube_y += jump_velocity
+        jump_velocity += gravity
+
+        if cube_y >= screen_height - cube_height then
+            cube_y = screen_height - cube_height
+            jump = false
+        end
+    end
+
+    if cube_x <= 0 then
+        cube_x = 0
+    end
+
+    elif cube_x >= screen_width - cube_width then
+        cube_x = screen_width - cube_width
+    end
+
+    screen_flip()
+end
+
+screen_quit()
